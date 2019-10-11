@@ -1,21 +1,16 @@
-import React from 'react';
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-function App() {
+import PokemonContainer from './components/pokemon/pokemon-container'
+import PokemonsListContainer from './components/pokemonslist/pokemons-list-container'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto mt-5 mb-10">
+      <Switch>
+        <Route exact path="/" component={PokemonsListContainer} />
+        <Route path="/pokemon/:pokemon" component={PokemonContainer} />
+      </Switch>
     </div>
   );
 }
