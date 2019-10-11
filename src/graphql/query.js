@@ -35,7 +35,7 @@ const POKEMON_ATTRIBUTE = `
  * monster per page 
  * @author willi <https://github.com/willi-dev>
  */
-export const MONSTER_PER_PAGE = 4
+export const MONSTER_PER_PAGE = 8
 
 /**
  * MONSTER_LIST
@@ -59,5 +59,15 @@ export const MONSTER = `
     pokemon(id: $id, name: $name) {
       ${POKEMON_ATTRIBUTE}
     }
+  }
+`
+
+/**
+ * MONSTER_CLASS
+ * monster classification
+ */
+export const MONSTER_CLASS = `
+  pokemons(first: -1) {
+    classification
   }
 `

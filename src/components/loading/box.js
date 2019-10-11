@@ -1,26 +1,32 @@
 import React from 'react'
 
 const styleText = {
-  color: `#ccc`,
-  backgroundColor: `#ccc`,
+  color: `#eee`,
+  backgroundColor: `#eee`,
   fontSize: `14px`
 }
 
 const Box = () => (
   <div className="w-1/4 wrounded overflow-hidden">
-    <div className="mb-2 mx-1 shadow-lg">
+    <div className="mb-4 mx-2 shadow-lg">
       <div className="h-64 lg:h-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" 
-        style={{ backgroundColor: `#ccc`, backgroundPosition: `center center`, backgroundSize: `cover`}} title="loading" />
+        style={{ backgroundColor: `#eee`, backgroundPosition: `center center`, backgroundSize: `cover`}} title="loading" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2" style={styleText}>Loading Monster</div>
-        <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <p className="text-gray-700 text-base mb-1" style={styleText}>
+          MaxCP: Loading...
+        </p>
+        <p className="text-gray-700 text-base mb-1" style={styleText}>
+          height: Loading...
+        </p>
+        <p className="text-gray-700 text-base mb-1" style={styleText}>
+          weight: Loading...
         </p>
       </div>
       <div className="px-6 py-4">
-        <span style={styleText} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">loading...</span>
-        <span style={styleText} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">loading...</span>
-        <span style={styleText} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">loading...</span>
+        <span style={styleText} className="text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">....</span>
+        <span style={styleText} className="text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">...</span>
+        <span style={styleText} className="text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">.......</span>
       </div>
     </div>
   </div>
