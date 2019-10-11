@@ -36,7 +36,7 @@ const PokemonsListContainer = (props) => {
       props.fetchMonsterError(e)
       console.log(e)
     }
-    console.log(props)
+    // console.log(props)
   }
 
   /**
@@ -46,24 +46,25 @@ const PokemonsListContainer = (props) => {
   const handleScroll = async () => {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return 
     // console.log(props)
-    console.log(props.monsterLoading)
+    // console.log(props.monsterLoading)
     // if (props.monsterLoading === false) {
-      console.log('fetch monster...')
-      await fetchMonsterList()
+    console.log('fetch monster...')
+    await fetchMonsterList()
     // }
   }
 
   useEffect(() => {
-    const initFetch = (async () => await fetchMonsterList())
     if (props.monsterList.length === 0) {
-      // setLoadingList(true)
+      console.log(props.monsterList.length)
+      const initFetch = (async () => await fetchMonsterList())
       initFetch()
-      // setLoadingList(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    return () => window.removeEventListener('scroll', handleScroll)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perPage])
 
@@ -74,7 +75,7 @@ const PokemonsListContainer = (props) => {
         props.monsterList.map((monster, index) => (
           <Fragment key={index}>
               <div className="w-1/4 wrounded overflow-hidden">
-                <div className="mb-2 mx-1 shadow-lg">
+                <div className="mb-4 mx-2 shadow-lg">
                   <div className="h-64 lg:h-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" 
                     style={{ backgroundImage: `url(${monster.image})`, backgroundPosition: `center center`, backgroundSize: `cover`}} title={monster.name} />
                   <div className="px-6 py-4">
