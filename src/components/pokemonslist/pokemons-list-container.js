@@ -81,13 +81,25 @@ const PokemonsListContainer = (props) => {
                   <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{monster.name}</div>
                     <p className="text-gray-700 text-base">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                      MaxCP: {monster.maxCP}
+                    </p>
+                    <p className="text-gray-700 text-base">
+                      height: {monster.height.minimum} {monster.height.maximum}
+                    </p>
+                    <p className="text-gray-700 text-base">
+                      weight: {monster.weight.minimum} {monster.weight.maximum}
                     </p>
                   </div>
                   <div className="px-6 py-4">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+                    {
+                      monster.resistant.map((resist, idx) => (
+                        <Fragment key={idx}>
+                          <span className="text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">
+                            {resist}
+                          </span>    
+                        </Fragment>
+                      ))
+                    }
                   </div>
                 </div>
               </div>
