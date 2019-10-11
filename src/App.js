@@ -6,7 +6,7 @@ import PokemonsListContainer from './components/pokemonslist/pokemons-list-conta
 
 const App = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-5 mb-10">
       <Switch>
         <Route exact path="/" component={PokemonsListContainer} />
         <Route path="/pokemon/:pokemon" component={PokemonContainer} />
