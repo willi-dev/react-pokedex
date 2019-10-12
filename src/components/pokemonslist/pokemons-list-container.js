@@ -40,10 +40,6 @@ const PokemonsListContainer = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perPage])
 
-  // const arrayMonster = () => (
-  //   props.monsterList.map
-  // )
-
   return (
     <div className="flex flex-wrap ">
       <Filter/>
@@ -67,8 +63,7 @@ const PokemonsListContainer = (props) => {
                     </Text>
                     <Text>
                       weight: {monster.weight.minimum} {monster.weight.maximum}
-                    </Text>
-                                      
+                    </Text>           
                   </div>
                   <div className="px-6 py-4">
                     <TextCapsule>
