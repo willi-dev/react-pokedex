@@ -46,8 +46,7 @@ const Filter = (props) => {
     <div>
       <div style={styleFilterPanel} className={`shadow-lg filter-panel p-5 ${isOpen}`}>
         <Text styleType="title">
-          Monster <br/>
-          Filter Classification
+          Monster Classification
         </Text>
         <div className="mr-2 text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 class-capsule">
           <label htmlFor="class-capsule-none">
