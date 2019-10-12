@@ -3,3 +3,27 @@
 @tailwind components;
 
 @tailwind utilities;
+
+/*
+ * filter style
+ */
+.filter-panel.is-close {
+  visibility: hidden;
+  right: -300px;
+  transition: right 0.4s ease-in-out;
+}
+.filter-panel.is-open {
+  visibility: visible;
+  z-index: 100;
+  right: 0;
+  transition: right 0.4s ease-in-out;
+}
+.filter-button.is-close {
+  transform: rotate(0deg);
+  transition: transform .3s linear
+}
+.filter-button.is-open {
+  transform: rotate(360deg);
+  transition: transform .3s linear;
+  z-index: 110;
+}
