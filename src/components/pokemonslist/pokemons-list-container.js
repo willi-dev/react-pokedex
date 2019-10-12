@@ -8,6 +8,7 @@ import Boxes from '../loading/boxes'
 import ImgBox from '../general/img-box'
 import TextCapsule from '../general/text-capsule'
 import Text from '../general/text'
+import Filter from '../general/filter'
 
 const PokemonsListContainer = (props) => {
   const [perPage, setPerPage] = useState(MONSTER_PER_PAGE)
@@ -41,6 +42,7 @@ const PokemonsListContainer = (props) => {
 
   return (
     <div className="flex flex-wrap ">
+      <Filter/>
       {
         props.monsterList.map((monster, index) => (
           <Fragment key={index}>
