@@ -5,7 +5,8 @@ import {
   FETCH_POKEMON,
   FETCH_POKEMON_SUCCESS,
   FETCH_POKEMON_ERROR,
-  SET_FILTER
+  SET_FILTER,
+  CLEAR_POKEMON
 } from './actionType'
 
 /**
@@ -48,7 +49,7 @@ const pokemonReducer = ( state = initialState, action ) => {
     case FETCH_POKEMON_SUCCESS: 
       return {
         ...state,
-        pokemon: {...action.payload},
+        pokemon: action.payload,
         loading: false,
         error: null
       }
@@ -57,6 +58,12 @@ const pokemonReducer = ( state = initialState, action ) => {
         ...state,
         loading: false,
         error: action.payload
+      }
+    case CLEAR_POKEMON:
+      return {
+        ...state,
+        loading: false,
+        pokemon: {}
       }
     case SET_FILTER:
       return {

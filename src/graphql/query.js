@@ -55,19 +55,9 @@ export const MONSTER_LIST = `
  * @author willi <https://github.com/willi-dev>
  */
 export const MONSTER = `
-  query monster($id: Int!, $name: String!) {
+  query monsterItem($id: String, $name: String) {
     pokemon(id: $id, name: $name) {
       ${POKEMON_ATTRIBUTE}
     }
-  }
-`
-
-/**
- * MONSTER_CLASS
- * monster classification
- */
-export const MONSTER_CLASS = `
-  pokemons(first: -1) {
-    classification
   }
 `
