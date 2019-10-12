@@ -40,7 +40,7 @@ const PokemonsListContainer = (props) => {
     return () => window.removeEventListener('scroll', handleScroll)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perPage])
-
+  
   return (
     <div className="flex flex-wrap ">
       <Filter/>

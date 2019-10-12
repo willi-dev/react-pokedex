@@ -10,7 +10,7 @@ const App = () => {
     <Fragment>
       <div className="container mx-auto">
         <div className="flex justify-center">
-          <div className="w-full md:w-1/4 mb-4 mt-4">
+          <div className="w-1/2 md:w-1/4 mb-4 mt-4">
             <Link to="/">
               <img src={Pokemon} alt="Pokemon | Pokedex"/>
             </Link>

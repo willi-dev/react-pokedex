@@ -5,6 +5,7 @@ import {
   FETCH_POKEMON,
   FETCH_POKEMON_SUCCESS,
   FETCH_POKEMON_ERROR,
+  CLEAR_POKEMON,
   SET_FILTER
 } from './actionType'
 
@@ -58,6 +59,13 @@ export const pokemonRequestSuccess = data => ({
 export const pokemonRequestError = error => ({
   type: FETCH_POKEMON_ERROR,
   payload: error
+})
+
+/**
+ * clearPokmeon
+ */
+export const clearPokemon = () => ({
+  type: CLEAR_POKEMON
 })
 
 /**
