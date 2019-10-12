@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To Running Project Locally
 In the project directory, run:
+(make sure you have install node.js & yarn in your local machine)
 
 ```bash
 # install dependencies
