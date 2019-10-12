@@ -5,6 +5,7 @@ import {
   FETCH_POKEMON,
   FETCH_POKEMON_SUCCESS,
   FETCH_POKEMON_ERROR,
+  SET_FILTER
 } from './actionType'
 
 /**
@@ -57,4 +58,13 @@ export const pokemonRequestSuccess = data => ({
 export const pokemonRequestError = error => ({
   type: FETCH_POKEMON_ERROR,
   payload: error
+})
+
+/**
+ * setFilter
+ * @author willi <https://github.com/willi-dev>
+ */
+export const setFilter = classification => ({
+  type: SET_FILTER,
+  payload: classification
 })
