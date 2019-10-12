@@ -44,7 +44,7 @@ const PokemonsListContainer = (props) => {
       {
         props.monsterList.map((monster, index) => (
           <Fragment key={index}>
-              <div className="w-1/4 wrounded overflow-hidden">
+              <div className="w-full md:w-1/4 wrounded overflow-hidden">
                 <div className="mb-4 mx-2 shadow-lg">
                   <ImgBox image={monster.image} text={monster.name} />
                   <div className="px-6 py-4">
@@ -58,19 +58,14 @@ const PokemonsListContainer = (props) => {
                       height: {monster.height.minimum} {monster.height.maximum}
                     </Text>
                     <Text>
-                    weight: {monster.weight.minimum} {monster.weight.maximum}
+                      weight: {monster.weight.minimum} {monster.weight.maximum}
                     </Text>
+                                      
                   </div>
                   <div className="px-6 py-4">
-                    {
-                      monster.resistant.map((resist, idx) => (
-                        <Fragment key={idx}>
-                          <TextCapsule>
-                            {resist}
-                          </TextCapsule>
-                        </Fragment>
-                      ))
-                    }
+                    <TextCapsule>
+                      {monster.classification}
+                    </TextCapsule> 
                   </div>
                 </div>
               </div>
