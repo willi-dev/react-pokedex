@@ -11397,15 +11397,17 @@ video {
 
 .filter-panel.is-close {
   visibility: hidden;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
   right: -300px;
+  -webkit-transition: right 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out;
 }
 
 .filter-panel.is-open {
   visibility: visible;
   z-index: 100;
   right: 0;
+  -webkit-transition: right 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out;
 }
 
 .filter-button.is-close {
@@ -11425,6 +11427,19 @@ video {
   transition: transform .3s linear;
   transition: transform .3s linear, -webkit-transform .3s linear;
   z-index: 110;
+}
+
+.class-capsule {
+  cursor: pointer;
+}
+
+.class-capsule label {
+  cursor: pointer;
+}
+
+.class-capsule input, .class-capsule p {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @media (min-width: 640px) {
@@ -54474,3 +54489,4 @@ video {
     z-index: auto;
   }
 }
+

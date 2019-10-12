@@ -27,3 +27,15 @@
   transition: transform .3s linear;
   z-index: 110;
 }
+
+.class-capsule {
+  cursor: pointer;
+}
+.class-capsule label {
+  cursor: pointer;
+}
+.class-capsule input, .class-capsule p {
+  display: inline-block;
+  vertical-align: middle;
+}
+

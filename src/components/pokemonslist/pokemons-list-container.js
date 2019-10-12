@@ -40,11 +40,17 @@ const PokemonsListContainer = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perPage])
 
+  // const arrayMonster = () => (
+  //   props.monsterList.map
+  // )
+
   return (
     <div className="flex flex-wrap ">
       <Filter/>
       {
-        props.monsterList.map((monster, index) => (
+        props.monsterList
+          .filter(m => m.classification === props.activeFilter || props.activeFilter === '')
+          .map((monster, index) => (
           <Fragment key={index}>
               <div className="w-full md:w-1/4 wrounded overflow-hidden">
                 <div className="mb-4 mx-2 shadow-lg">
@@ -88,7 +94,8 @@ const PokemonsListContainer = (props) => {
 const mapStateToProps = store => ({
   monsterList: store.pokemon.pokemonsList,
   monsterLoading: store.pokemon.loading,
-  monsterError: store.pokemon.error
+  monsterError: store.pokemon.error,
+  activeFilter: store.pokemon.filter
 })
 
 const mapDispatchToProps = dispatch => ({
