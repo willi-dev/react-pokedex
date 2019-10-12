@@ -26,6 +26,11 @@ const Box = () => (
       <div className="px-6 py-4">
         <span style={styleText} className="text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">.........</span>
       </div>
+      <div className="px-6 pb-4">
+        <button className="block w-full text-center font-bold py-2 px-4 rounded" style={styleText}>
+          Loading...
+        </button>
+      </div>
     </div>
   </div>
 )

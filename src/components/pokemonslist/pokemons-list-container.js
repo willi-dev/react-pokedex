@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { MONSTER_PER_PAGE, MONSTER_LIST } from '../../graphql/query'
 import { pokemonsRequest, pokemonsRequestSuccess, pokemonsRequestError } from '../../store/pokemon/action'
@@ -69,6 +70,11 @@ const PokemonsListContainer = (props) => {
                     <TextCapsule>
                       {monster.classification}
                     </TextCapsule> 
+                  </div>
+                  <div className="px-6 pb-4">
+                    <Link to={`/pokemon/${monster.name}-${monster.id}`} className="block w-full bg-orange-400 hover:bg-orange-200 text-white hover:text-blue-400 text-center font-bold py-2 px-4 rounded">
+                      Detail
+                    </Link>
                   </div>
                 </div>
               </div>
