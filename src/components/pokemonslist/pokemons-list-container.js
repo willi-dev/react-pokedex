@@ -4,8 +4,10 @@ import axios from 'axios'
 import { MONSTER_PER_PAGE, MONSTER_LIST } from '../../graphql/query'
 import { pokemonsRequest, pokemonsRequestSuccess, pokemonsRequestError } from '../../store/pokemon/action'
 
-// import Box from '../loading/box'
 import Boxes from '../loading/boxes'
+import ImgBox from '../general/img-box'
+import TextCapsule from '../general/text-capsule'
+import Text from '../general/text'
 
 const PokemonsListContainer = (props) => {
   const [perPage, setPerPage] = useState(MONSTER_PER_PAGE)
@@ -16,14 +18,14 @@ const PokemonsListContainer = (props) => {
    */
   const handleScroll = async () => {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return 
-    console.log('fetch monster: by scroll')
+    // console.log('fetch monster: by scroll')
     await props.fetchMonster(perPage)
     setPerPage(perPage + MONSTER_PER_PAGE)
   }
 
   useEffect(() => {
     if (props.monsterList.length === 0) {
-      console.log('fetch monster: init')
+      // console.log('fetch monster: init')
       const initFetch = (async () => await props.fetchMonster(perPage))
       setPerPage(perPage + MONSTER_PER_PAGE)
       initFetch()
@@ -37,7 +39,6 @@ const PokemonsListContainer = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perPage])
 
-  
   return (
     <div className="flex flex-wrap ">
       {
@@ -45,27 +46,28 @@ const PokemonsListContainer = (props) => {
           <Fragment key={index}>
               <div className="w-1/4 wrounded overflow-hidden">
                 <div className="mb-4 mx-2 shadow-lg">
-                  <div className="h-64 lg:h-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" 
-                    style={{ backgroundImage: `url(${monster.image})`, backgroundPosition: `center center`, backgroundSize: `cover`}} title={monster.name} />
+                  <ImgBox image={monster.image} text={monster.name} />
                   <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">{monster.name}</div>
-                    <p className="text-gray-700 text-base">
+                    <Text styleType="title">
+                      {monster.name}
+                    </Text>
+                    <Text>
                       MaxCP: {monster.maxCP}
-                    </p>
-                    <p className="text-gray-700 text-base">
+                    </Text>
+                    <Text>
                       height: {monster.height.minimum} {monster.height.maximum}
-                    </p>
-                    <p className="text-gray-700 text-base">
-                      weight: {monster.weight.minimum} {monster.weight.maximum}
-                    </p>
+                    </Text>
+                    <Text>
+                    weight: {monster.weight.minimum} {monster.weight.maximum}
+                    </Text>
                   </div>
                   <div className="px-6 py-4">
                     {
                       monster.resistant.map((resist, idx) => (
                         <Fragment key={idx}>
-                          <span className="text-xs inline-block mb-1 bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">
+                          <TextCapsule>
                             {resist}
-                          </span>    
+                          </TextCapsule>
                         </Fragment>
                       ))
                     }
@@ -109,7 +111,7 @@ const mapDispatchToProps = dispatch => ({
       dispatch(pokemonsRequestSuccess(fetching.data.data.pokemons))
     } catch (e) {
       dispatch(pokemonsRequestError(e))
-      console.log(e)
+      // console.log(e)
     }
   }
 })
