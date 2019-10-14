@@ -1,9 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { MONSTER_PER_PAGE, MONSTER_LIST } from '../../graphql/query'
-import { pokemonsRequest, pokemonsRequestSuccess, pokemonsRequestError } from '../../store/pokemon/action'
+import { MONSTER_PER_PAGE } from '../../graphql/query'
+import { pokemonsRequest } from '../../store/pokemon/action'
 
 import Boxes from '../loading/boxes'
 import ImgBox from '../general/img-box'
@@ -20,15 +19,13 @@ const PokemonsListContainer = (props) => {
    */
   const handleScroll = async () => {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return 
-    // console.log('fetch monster: by scroll')
-    await props.fetchMonster(perPage)
+    await props.fetchMonster({perPage: perPage})
     setPerPage(perPage + MONSTER_PER_PAGE)
   }
 
   useEffect(() => {
     if (props.monsterList.length === 0) {
-      // console.log('fetch monster: init')
-      const initFetch = (async () => await props.fetchMonster(perPage))
+      const initFetch = (async () => await props.fetchMonster({ perPage: perPage }))
       setPerPage(perPage + MONSTER_PER_PAGE)
       initFetch()
     }
@@ -100,24 +97,8 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchMonster: async (perPage) => { 
-    dispatch(pokemonsRequest())
-    try {
-      const fetching = await axios.post('https://graphql-pokemon.now.sh', {
-        query: MONSTER_LIST,
-        variables: {
-          first: perPage
-        }
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      dispatch(pokemonsRequestSuccess(fetching.data.data.pokemons))
-    } catch (e) {
-      dispatch(pokemonsRequestError(e))
-      // console.log(e)
-    }
+  fetchMonster: (data) => { 
+    dispatch(pokemonsRequest(data))
   }
 })
 

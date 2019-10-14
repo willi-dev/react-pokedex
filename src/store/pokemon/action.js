@@ -1,3 +1,5 @@
+import axios from 'axios'
+import { MONSTER_LIST, MONSTER } from '../../graphql/query'
 import {
   FETCH_POKEMONS_LIST,
   FETCH_POKEMONS_LIST_SUCCESS,
@@ -13,7 +15,33 @@ import {
  * pokemonsRequest 
  * @author willi <https://github.com/willi-dev>
  */
-export const pokemonsRequest = () => ({
+export const pokemonsRequest = (data) => {
+  const { perPage } = data
+  return async (dispatch) => { 
+    dispatch(pokemonsRequestStart())
+    try {
+      const fetching = await axios.post('https://graphql-pokemon.now.sh', {
+        query: MONSTER_LIST,
+        variables: {
+          first: perPage
+        }
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      dispatch(pokemonsRequestSuccess(fetching.data.data.pokemons))
+    } catch (e) {
+      dispatch(pokemonsRequestError(e))
+    }
+  }
+}
+
+/**
+ * pokemonsRequestStart
+ * @author willi <https://github.com/willi-dev> 
+ */
+export const pokemonsRequestStart = () => ({
   type: FETCH_POKEMONS_LIST
 })
 
@@ -39,7 +67,31 @@ export const pokemonsRequestError = error => ({
  * pokemonRequest
  * @author willi <https://github.com/willi-dev>
  */
-export const pokemonRequest = () => ({
+export const pokemonRequest = (data) => {
+  const { id, name } = data
+  return async (dispatch) => {
+    dispatch(clearPokemon())
+    dispatch(pokemonRequestStart())
+    try {
+      const fetching = await axios.post('https://graphql-pokemon.now.sh', {
+        query: MONSTER,
+        variables: {
+          id: id,
+          name: name
+        }
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      dispatch(pokemonRequestSuccess(fetching.data.data.pokemon))
+    } catch (e) {
+      dispatch(pokemonRequestError(e))
+    }
+  }
+}
+
+export const pokemonRequestStart = () => ({
   type: FETCH_POKEMON
 })
 
