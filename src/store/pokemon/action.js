@@ -68,7 +68,7 @@ export const pokemonsRequestError = error => ({
  * @author willi <https://github.com/willi-dev>
  */
 export const pokemonRequest = (data) => {
-  const { id, name } = data
+  const { name } = data
   return async (dispatch) => {
     dispatch(clearPokemon())
     dispatch(pokemonRequestStart())
@@ -76,7 +76,6 @@ export const pokemonRequest = (data) => {
       const fetching = await axios.post('https://graphql-pokemon.now.sh', {
         query: MONSTER,
         variables: {
-          id: id,
           name: name
         }
       }, {

@@ -9,7 +9,6 @@ import Text from '../general/text'
 const PokemonContainer = props => {
   const {
     fetchMonsterItem,
-    idMonster, 
     nameMonster,
     monsterLoading,
     monsterItem,
@@ -17,7 +16,7 @@ const PokemonContainer = props => {
   } = props
   
   useEffect(() => {
-    const initFetch = (async () => await fetchMonsterItem({ id: idMonster, name: nameMonster }))
+    const initFetch = (async () => await fetchMonsterItem({ name: nameMonster }))
     initFetch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -99,8 +98,7 @@ const PokemonContainer = props => {
 }
 
 const mapStateToProps = (store, ownProps) => ({
-  nameMonster: ownProps.match.params.pokemon.split('-')[0],
-  idMonster: ownProps.match.params.pokemon.split('-')[1],
+  nameMonster: ownProps.match.params.pokemon,
   monsterLoading: store.pokemon.loading,
   monsterError: store.pokemon.error,
   monsterItem: store.pokemon.pokemon

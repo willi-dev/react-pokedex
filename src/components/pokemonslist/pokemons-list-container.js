@@ -69,7 +69,7 @@ const PokemonsListContainer = (props) => {
                     </TextCapsule> 
                   </div>
                   <div className="px-6 pb-4">
-                    <Link to={`/pokemon/${monster.name}-${monster.id}`} className="block w-full bg-orange-400 hover:bg-orange-200 text-white hover:text-blue-400 text-center font-bold py-2 px-4 rounded">
+                    <Link to={`/pokemon/${monster.name}`} className="block w-full bg-orange-400 hover:bg-orange-200 text-white hover:text-blue-400 text-center font-bold py-2 px-4 rounded">
                       Detail
                     </Link>
                   </div>
