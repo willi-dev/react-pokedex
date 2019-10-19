@@ -11,7 +11,7 @@ import Text from '../general/text'
 import Filter from '../general/filter'
 
 const PokemonsListContainer = (props) => {
-  const [perPage, setPerPage] = useState(MONSTER_PER_PAGE)
+  const [perPage, setPerPage] = useState(props.currentPerPage)
 
   /**
    * handleScroll
@@ -46,35 +46,35 @@ const PokemonsListContainer = (props) => {
           .filter(m => m.classification === props.activeFilter || props.activeFilter === '')
           .map((monster, index) => (
           <Fragment key={index}>
-              <div className="w-full md:w-1/4 wrounded overflow-hidden">
-                <div className="mb-4 mx-2 shadow-lg">
-                  <ImgBox image={monster.image} text={monster.name} />
-                  <div className="px-6 py-4">
-                    <Text styleType="title">
-                      {monster.name}
-                    </Text>
-                    <Text>
-                      MaxCP: {monster.maxCP}
-                    </Text>
-                    <Text>
-                      height: {monster.height.minimum} {monster.height.maximum}
-                    </Text>
-                    <Text>
-                      weight: {monster.weight.minimum} {monster.weight.maximum}
-                    </Text>           
-                  </div>
-                  <div className="px-6 py-4">
-                    <TextCapsule>
-                      {monster.classification}
-                    </TextCapsule> 
-                  </div>
-                  <div className="px-6 pb-4">
-                    <Link to={`/pokemon/${monster.name}`} className="block w-full bg-orange-400 hover:bg-orange-200 text-white hover:text-blue-400 text-center font-bold py-2 px-4 rounded">
-                      Detail
-                    </Link>
-                  </div>
+            <div className="w-full md:w-1/4 wrounded overflow-hidden">
+              <div className="mb-4 mx-2 shadow-lg">
+                <ImgBox image={monster.image} text={monster.name} />
+                <div className="px-6 py-4">
+                  <Text styleType="title">
+                    {monster.name}
+                  </Text>
+                  <Text>
+                    MaxCP: {monster.maxCP}
+                  </Text>
+                  <Text>
+                    height: {monster.height.minimum} {monster.height.maximum}
+                  </Text>
+                  <Text>
+                    weight: {monster.weight.minimum} {monster.weight.maximum}
+                  </Text>           
+                </div>
+                <div className="px-6 py-4">
+                  <TextCapsule>
+                    {monster.classification}
+                  </TextCapsule> 
+                </div>
+                <div className="px-6 pb-4">
+                  <Link to={`/pokemon/${monster.name}`} className="block w-full bg-orange-400 hover:bg-orange-200 text-white hover:text-blue-400 text-center font-bold py-2 px-4 rounded">
+                    Detail
+                  </Link>
                 </div>
               </div>
+            </div>
           </Fragment>
         ))
       }
@@ -93,7 +93,8 @@ const mapStateToProps = store => ({
   monsterList: store.pokemon.pokemonsList,
   monsterLoading: store.pokemon.loading,
   monsterError: store.pokemon.error,
-  activeFilter: store.pokemon.filter
+  activeFilter: store.pokemon.filter,
+  currentPerPage: store.pokemon.currentPerPage
 })
 
 const mapDispatchToProps = dispatch => ({
