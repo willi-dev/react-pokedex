@@ -17,7 +17,8 @@ const initialState = {
   pokemon: {},
   error: null,
   loading: false,
-  filter: ''
+  filter: '',
+  currentPerPage: 8
 }
 
 const pokemonReducer = ( state = initialState, action ) => {
@@ -32,7 +33,8 @@ const pokemonReducer = ( state = initialState, action ) => {
       return {
         ...state,
         loading: false,
-        pokemonsList: action.payload
+        pokemonsList: action.payload,
+        currentPerPage: state.currentPerPage + 8
       }
     case FETCH_POKEMONS_LIST_ERROR:
       return {
